@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google'
 import Header from './Header'
 import Footer from './Footer'
 import './globals.css'
+import { Suspense } from 'react'
+import Loading from './loading'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,8 +21,10 @@ export default function RootLayout({
   return (
     <html lang="jp">
       <body className="container mx-auto bg-slate-700 text-slate-50">
-        <Header/>
+        <Header />
+        <Suspense fallback={ <Loading/> }>
         {children}
+        </Suspense>
         <Footer/>
       </body>
     </html>
