@@ -12,7 +12,7 @@ const ArticleList = ({ articles }: ArticleListProps) => {
       {articles.map((article: Article) => (
         <article className="flex flex-col shadow my-4" key={article.id}>
           <a href={`articles/${article.id}`} className="hover:opacity-75">
-            <img src="https://source.unsplash.com/collection/1346951/1000x500?sig=1" />
+            <img src={`https://source.unsplash.com/collection/1346951/1000x500?sig=${article.id}`} />
           </a>
           <div className="bg-white flex flex-col justify-start p-6">
             <a
