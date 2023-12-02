@@ -1,8 +1,10 @@
 "use client";
 import { createArticle } from '@/blogAPI';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 
 const CreateBlogpage = () => {
+  const router = useRouter();
   const [id, setId] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
@@ -11,6 +13,9 @@ const CreateBlogpage = () => {
     e.preventDefault();
 
     await createArticle(id, title, content);
+
+    router.push("/");
+    router.refresh();
   }
 
   return (
