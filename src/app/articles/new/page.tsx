@@ -8,12 +8,14 @@ const CreateBlogpage = () => {
   const [id, setId] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    setLoading(true);
     await createArticle(id, title, content);
 
+    setLoading(false);
     router.push("/");
     router.refresh();
   }
@@ -60,7 +62,12 @@ const CreateBlogpage = () => {
 
         <button
           type="submit"
-          className={`py-2 px-4 border rounded-md text-white font-semibold focus:outline-none`}
+          className={`py-2 px-4 border rounded-md ${
+            loading
+              ? "bg-orange-300 cursor-not-allowed"
+              : "bg-orange-400 hover:bg-orange-500"
+          } text-white font-semibold focus:outline-none`}
+          disabled={loading}
         >
           作成
         </button>
