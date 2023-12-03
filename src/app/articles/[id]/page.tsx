@@ -1,3 +1,4 @@
+import DeleteButton from "@/app/components/DeleteButton";
 import { getDetailArticle } from "@/blogAPI";
 import Image from "next/image";
 
@@ -21,6 +22,9 @@ export default async function Article({
       </h1>
       <div className="text-lg leading-relaxed text-justify">
         <p>{ detailArticle.content}</p>
+      </div>
+      <div>
+        <DeleteButton id={detailArticle.id} />
       </div>
     </div>
   );
